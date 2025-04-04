@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猪猪生日快乐！</title>
+    <style>
+        body {
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            background-color: #E8F5E9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: #2E7D32;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(46, 125, 50, 0.3);
+        }
+        
+        .capybara-img {
+            width: 300px;
+            height: auto;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(109, 76, 65, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .capybara-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .message {
+            font-size: 1.5em;
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+        
+        .balloons {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .balloon {
+            width: 60px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 10px;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .balloon:before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 2px;
+            height: 40px;
+            background-color: #999;
+            transform: translateX(-50%);
+        }
+        
+        .balloon:nth-child(1) {
+            background-color: #4CAF50;
+            animation-delay: 0s;
+        }
+        
+        .balloon:nth-child(2) {
+            background-color: #8BC34A;
+            animation-delay: 0.5s;
+        }
+        
+        .balloon:nth-child(3) {
+            background-color: #CDDC39;
+            animation-delay: 1s;
+        }
+        
+        .balloon:nth-child(4) {
+            background-color: #4CAF50;
+            animation-delay: 1.5s;
+        }
+        
+        .balloon:nth-child(5) {
+            background-color: #8BC34A;
+            animation-delay: 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #4CAF50;
+            opacity: 0;
+            animation: confetti 5s ease-in-out infinite;
+        }
+        
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #66BB6A;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+        }
+        
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        
+        .music-control i {
+            font-size: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>猪猪生日快乐</h1>
+        
+        <div class="balloons">
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+        </div>
+        
+          <img src="https://mms1.baidu.com/it/u=253620196,3559045974&fm=253&app=120&f=JPEGw=500&h=500" alt="O9HNq.jpeg" border="0">
+        
+        <div class="message">
+            <p>Oh~~!!猪猪</p>
+            <p>今天是你的特别日子！</p>
+            <p>祝你生日快乐，永远淡定，</p>
+            <p>像卡皮巴拉一样悠闲自在，</p>
+            <p>享受生活的每一刻！</p>
+            <p>嚯哈哈哈哈哈哈哈哈哈</p>
+        </div>
+        
+        <button class="btn" id="confettiBtn">撒花花庆祝</button>
+    </div>
+    
+    <button class="music-control" id="musicBtn">
+        <i class="fas fa-music"></i>
+    </button>
+    
+   <audio id="bgMusic" loop>
+       <source src="http://ws.stream.qqmusic.qq.com/C400001BjGAv0eBoS7.m4a?guid=199521888&vkey=F235C95460BC64DBC7093E419B14CCD03AA2F45F04F0F3275313649D8E3883EF96C13B434554BA753B4FB92B43D4F913DFB98A1956E9BF90__v21e2a1734&uin=&fromtag=120032" type="audio/mpeg">
+
+        您的浏览器不支持音频元素。
+    </audio>
+    
+    <script>
+        // 彩纸效果
+        document.getElementById('confettiBtn').addEventListener('click', function() {
+            createConfetti();
+        });
+        
+        function createConfetti() {
+            const colors = ['#4CAF50', '#8BC34A', '#CDDC39', '#AED581', '#C8E6C9'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // 随机位置
+                const left = Math.random() * 100;
+                confetti.style.left = `${left}vw`;
+                
+                // 随机颜色
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.backgroundColor = color;
+                
+                // 随机大小
+                const size = Math.random() * 10 + 5;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                
+                // 随机形状
+                if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '50%';
+                } else {
+                    confetti.style.borderRadius = '0';
+                }
+                
+                // 随机动画持续时间
+                const duration = Math.random() * 3 + 2;
+                confetti.style.animationDuration = `${duration}s`;
+                
+                document.body.appendChild(confetti);
+                
+                // 动画结束后移除元素
+                setTimeout(() => {
+                    confetti.remove();
+                }, duration * 1000);
+            }
+        }
+        
+        // 音乐控制
+        const musicBtn = document.getElementById('musicBtn');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+        
+        musicBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+            } else {
+                bgMusic.play();
+                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // 页面加载时尝试自动播放音乐（需要用户交互后才会真正播放）
+        document.addEventListener('click', function() {
+            if (!isPlaying) {
+                bgMusic.play().then(() => {
+                    isPlaying = true;
+                    musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }).catch(error => {
+                    // 自动播放被阻止，需要用户点击
+                    console.log('自动播放被阻止:', error);
+                });
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
